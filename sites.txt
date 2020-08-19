@@ -1,0 +1,2 @@
+https://realpython.com/beautiful-soup-web-scraper-python/
+https://www.weatheronline.co.uk/reports/climate/Italy.htm
