@@ -1,28 +1,34 @@
-from .citation import Citation
+from urllib.parse import urlparse
 
+import requests
+from bs4 import BeautifulSoup
+
+#from .citation import Citation
 
 def fetch_data(url):
-    for url in lines:
-        url = url.strip()
+    data = {}
+
+    url = url.strip()
+
+    # Get html
+    res = requests.get(url)
+
+    # make soup
+    soup = BeautifulSoup(res.content, 'html.parser')
+
+    data['url'] = url
+    parsed_url = urlparse(url)
+    data['domain'] = parsed_url.netloc
+
+    # find title
+    data['title'] = get_title(soup)
     
-        # Get html
-        res = requests.get(url)
-    
-        # make soup
-        soup = BeautifulSoup(res.content, 'html.parser')
-
-        data[count]['url'] = url
-        parsed_url = urlparse(url)
-        data[count]['domain'] = parsed_url.netloc
-
-        # find title
-        data[count]['title'] = soup.select('title')[0].text
-        count += 1
+    return data
 
 
 
-def find(searches: dict):
+def find(searches: list):
     pass
 
 def get_title(soup):
-    pass
+    return soup.select('title')[0].text
