@@ -20,6 +20,6 @@ for url in lines:
     count += 1
 
 citations = format_harvard(data_list)
-print(citations)
+# print(citations)
 with open("out.txt", "w") as f:
     f.write("\n".join(citations))
