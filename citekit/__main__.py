@@ -7,7 +7,7 @@ from .fetch import fetch_data
 from .formatter import format_harvard
 
 
-with open('sites.txt') as f:
+with open("sites.txt") as f:
     lines = f.readlines()
 
 lines = [i.split()[0] for i in lines]
@@ -20,6 +20,6 @@ for url in lines:
     count += 1
 
 citations = format_harvard(data_list)
-
-with open('out.txt', 'w') as f:
-    f.write('\n'.join(citations))
+print(citations)
+with open("out.txt", "w") as f:
+    f.write("\n".join(citations))

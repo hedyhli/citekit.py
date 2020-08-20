@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "citecat"
+name = "citekit"
 version = "0.1.0"
 description = ""
 authors = ["Hedy Li <hedyhyry@gmail.com>"]
