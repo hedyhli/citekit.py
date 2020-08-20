@@ -1,4 +1,4 @@
-# CiteEasy.py
+# CiteCat
 
 Python library for creating Citations from URLs made easy.
 

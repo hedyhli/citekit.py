@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "citethemforme"
+name = "citecat"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Hedy Li <hedyhyry@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
