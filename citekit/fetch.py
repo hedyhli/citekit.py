@@ -35,7 +35,7 @@ def find_all(searches: list, soup):
         results += soup.find_all(attrs=s)
 
     for res in results:
-        res = res["content"] or res.text
+        res = res["content"] if "content" in str(res.keys) else res.text
         if res is not None:
             return res
 

@@ -7,7 +7,7 @@ def format_harvard(data):
         else:
             citation = d["author"]
 
-        citation += "{published}, {title} [online] {domain} Available at: <{url}> [Accessed 20 Aug 2020]".format(
+        citation += "{published}, {title} [online] {domain} Available at: <{url}> [Accessed {accessed} Aug 2020]".format(
             **d
         )
 
