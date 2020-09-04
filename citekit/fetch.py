@@ -1,31 +1,34 @@
 from urllib.parse import urlparse
+from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
+from dateparser import parse
 
 # from .citation import Citation
 
 
 def fetch_data(url):
     data = {}
-
     url = url.strip()
-
-    # Get html
     res = requests.get(url)
-
-    # make soup
     soup = BeautifulSoup(res.content, "html.parser")
 
     data["url"] = url
     parsed_url = urlparse(url)
     data["domain"] = parsed_url.netloc
 
-    # find info
-    data["title"] = get_title(soup)
-    data["author"] = get_author(soup)
-    data["published"] = get_published_date(soup)
+    data["title"] = get_title(soup).strip()
+    data["author"] = get_author(soup).strip()
+    data["published"] = get_published_date(soup).strip()
 
+    return data
+
+
+def parse_data(data):
+    dt = parse(data["published"])
+    if dt is not None:
+        data["published"] = dt.year
     return data
 
 
