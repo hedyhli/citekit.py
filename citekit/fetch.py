@@ -1,5 +1,4 @@
 from urllib.parse import urlparse
-from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -11,7 +10,9 @@ from dateparser import parse
 def fetch_data(url):
     data = {}
     url = url.strip()
-    res = requests.get(url)
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'}
+    res = requests.get(url, headers=headers)
     soup = BeautifulSoup(res.content, "html.parser")
 
     data["url"] = url
@@ -46,7 +47,7 @@ def find_all(searches: list, soup):
 
 
 def get_title(soup):
-    return soup.select("title")[0].text
+    return soup.select("title")[0].text if soup.select("title") else ""
 
 
 def get_author(soup):

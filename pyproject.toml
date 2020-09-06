@@ -9,6 +9,7 @@ python = "^3.8"
 requests = "^2.24.0"
 beautifulsoup4 = "^4.9.1"
 dateparser = "^0.7.6"
+bs4 = "^0.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
