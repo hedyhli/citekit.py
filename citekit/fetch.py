@@ -11,13 +11,15 @@ def fetch_data(url):
     data = {}
     url = url.strip()
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+    }
     res = requests.get(url, headers=headers)
     soup = BeautifulSoup(res.content, "html.parser")
 
     data["url"] = url
     parsed_url = urlparse(url)
-    data["domain"] = parsed_url.netloc
+    data["domain"] = parsed_url.netloc.replace("www.", "")
 
     data["title"] = get_title(soup).strip()
     data["author"] = get_author(soup).strip()

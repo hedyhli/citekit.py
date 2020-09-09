@@ -1,8 +1,3 @@
-from urllib.parse import urlparse
-
-import requests
-from bs4 import BeautifulSoup
-
 from .fetch import fetch_data, parse_data
 from .formatter import format_harvard
 
@@ -20,11 +15,12 @@ for url in urls:
     data_list[count] = fetch_data(url)
     data_list[count] = parse_data(data_list[count])
     count += 1
+    print(count)
 
 for i in range(len(data_list)):
     data_list[i]["accessed"] = access_dates[i]
 
 citations = format_harvard(data_list)
-# print(citations)
+print("formatted")
 with open("out.txt", "w") as f:
     f.write("\n".join(citations))

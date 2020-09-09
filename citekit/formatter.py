@@ -18,11 +18,12 @@ def format_harvard(data):
         accessed = parse(d["accessed"])
         # print(d["url"], accessed)
         d["accessed"] = accessed.strftime("%d %B %Y")
-        citation += f"{d['published']}, " if d['published'] else ''
 
-        citation += "{title} [online] {domain} Available at: <{url}> [Accessed {accessed}]".format(
-            **d
-        )
+        citation += f"{d['domain']}. "
+        citation += f"{d['published']}. " if d["published"] else ""
+        citation += f"{d['title']}, " if d["title"] else ""
+
+        citation += "[online] Available at: <{url}> [Accessed {accessed}].".format(**d)
 
         result.append(citation)
 
